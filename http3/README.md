@@ -4,13 +4,13 @@ Client machine will need to run following command to build h2load to support htt
 ```
 http2benchmark/http3/script/prepare_client.sh
 ```
-Server machine will only need to run following command to build Quich for Nginx server since LiteSpeed web Server has HTTP/3 supported by default. 
+On the server machine you should run the command to build Quiche for Nginx server and the h2o server: 
 ```
 http2benchmark/http3/script/prepare_server.sh
 ```
 
 ## How to test
-Run command to benchmark LSWS, OpenLiteSpeed and Nginx
+Run command to benchmark LSWS, OpenLiteSpeed, Nginx and h2o
 ```
 bash benchmark.sh http3.profile
 ```

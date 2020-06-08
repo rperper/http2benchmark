@@ -112,6 +112,10 @@ check_os()
             OSNAMEVER=UBUNTU18
             OSVER=bionic
             MARIADBCPUARCH="arch=amd64"
+	elif [ ${UBUNTU_V} = 20 ] ; then
+            OSNAMEVER=UBUNTU20
+            OSVER=focal
+            MARIADBCPUARCH="arch=amd64"
         fi
     elif [ -f /etc/debian_version ] ; then
         OSNAME=debian
@@ -135,7 +139,7 @@ check_os()
         fi
     fi
     if [ "${OSNAMEVER}" = "" ] ; then
-        echoR "Sorry, currently script only supports Centos(6-7), Debian(7-10) and Ubuntu(14,16,18)."
+        echoR "Sorry, currently script only supports Centos(6-7), Debian(7-10) and Ubuntu(14,16,18,20)."
         exit 1
     else
         if [ "${OSNAME}" = "centos" ] ; then
