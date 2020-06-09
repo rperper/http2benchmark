@@ -1,8 +1,10 @@
 
 
+apt install libjemalloc*
+
 apt install git g++ make binutils autoconf automake autotools-dev libtool pkg-config \
         zlib1g-dev libev-dev libjemalloc-dev libc-ares-dev bison \
-        zlib1g libev4 libjemalloc* libc-ares2 ca-certificates psmisc \
+        zlib1g libev4 libc-ares2 ca-certificates psmisc \
         python -y
 
 cd `dirname "$0"`
@@ -19,13 +21,13 @@ git clone --depth 1 https://github.com/ngtcp2/nghttp3 && \
     ./configure --enable-lib-only --disable-shared && \
     make && make install-strip && cd .. 
 
-git clone --depth 1 https://github.com/ngtcp2/ngtcp2 && \
+git clone --depth 1 -b draft-27 https://github.com/ngtcp2/ngtcp2 && \
     cd ngtcp2 && autoreconf -i && \
     PKG_CONFIG_PATH="/usr/local/lib/pkgconfig/" LIBS="-lpthread -ldl" CPPFLAGS="-D__STDC_FORMAT_MACROS" ./configure --disable-shared && \
     make && make install-strip && cd .. 
 
-git clone --depth 1 -b quic https://github.com/nghttp2/nghttp2.git && \
-    cd nghttp2 && \
+git clone -b quic https://github.com/nghttp2/nghttp2.git && \
+    cd nghttp2 && git checkout 45a0879 && \
     git submodule update --init && autoreconf -i && \
     PKG_CONFIG_PATH="/usr/local/lib/pkgconfig/" LIBS="-lpthread -ldl" ./configure --disable-examples --disable-hpack-tools --disable-python-bindings --disable-shared --with-neverbleed && \
     make install-strip && \
