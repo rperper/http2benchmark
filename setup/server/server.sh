@@ -116,6 +116,7 @@ check_os()
             OSNAMEVER=UBUNTU20
             OSVER=focal
             MARIADBCPUARCH="arch=amd64"
+            PHP_S='4'
         fi
     elif [ -f /etc/debian_version ] ; then
         OSNAME=debian
