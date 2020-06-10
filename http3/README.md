@@ -4,7 +4,7 @@ Client machine will need to run following command to build h2load to support htt
 ```
 http2benchmark/http3/script/prepare_client.sh
 ```
-On the server machine you should run the command to build Quiche for Nginx server and the h2o server: 
+On the server machine you only need to run the command to build Quiche for Nginx server: 
 ```
 http2benchmark/http3/script/prepare_server.sh
 ```
